@@ -17,15 +17,16 @@ export default function QueryProcessor(query: string): string {
     );
   }
   if (query.toLowerCase().includes("plus")) {
-    const regex = /\d+/;
+    const regex = /\d+/g;
     const matches = query.toLowerCase().match(regex);
     if (matches) {
         // Extract the numbers from the matched groups
         const num1 = parseFloat(matches[0]);
         const num2 = parseFloat(matches[1]);
-    
+        const num3 = parseFloat(matches[2]);
+
         // Perform addition
-        const result = num1 + num2;
+        const result = num1 + num2 + num3;
         return result.toString();
     }
   }
