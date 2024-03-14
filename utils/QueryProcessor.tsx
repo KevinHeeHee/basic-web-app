@@ -16,8 +16,8 @@ export default function QueryProcessor(query: string): string {
       "HeeHee"
     );
   }
-  if (query.toLowerCase().includes("what is (\d+) plus (\d+)\?")) {
-    const regex = /what is (\d+) plus (\d+)\?/i;
+  if (query.toLowerCase().includes("plus")) {
+    const regex = /\d+/;
     const matches = query.toLowerCase().match(regex);
     if (matches) {
         // Extract the numbers from the matched groups
@@ -29,8 +29,8 @@ export default function QueryProcessor(query: string): string {
         return result.toString();
     }
   }
-  if (query.toLowerCase().includes("what is (\d+) multiplied by (\d+)\?")) {
-    const regex = /what is (\d+) multiplied by (\d+)\?/i;
+  if (query.toLowerCase().includes("minus")) {
+    const regex = /\d+/;
     const matches = query.toLowerCase().match(regex);
     if (matches) {
         // Extract the numbers from the matched groups
@@ -38,21 +38,7 @@ export default function QueryProcessor(query: string): string {
         const num2 = parseFloat(matches[1]);
     
         // Perform addition
-        const result = num1 * num2;
-        return result.toString();
-    }
-  }
-  if (query.toLowerCase().includes("which of the following numbers is the largest: (\d+), (\d+), (\d+)\?")) {
-    const regex = /which of the following numbers is the largest: (\d+), (\d+), (\d+)\?/i;
-    const matches = query.toLowerCase().match(regex);
-    if (matches) {
-        // Extract the numbers from the matched groups
-        const num1 = parseFloat(matches[0]);
-        const num2 = parseFloat(matches[1]);
-        const num3 = parseFloat(matches[2]);
-
-        // Perform addition
-        const result = Math.max(num1, num2, num3);
+        const result = num1 - num2;
         return result.toString();
     }
   }
