@@ -16,10 +16,23 @@ export default function QueryProcessor(query: string): string {
       "HeeHee"
     );
   }
+  if (query.toLowerCase().includes("what is (\d+) plus (\d+)\?")) {
+    const regex = /what is (\d+) plus (\d+)\?/i;
+    const matches = query.toLowerCase().match(regex);
+    if (matches) {
+        // Extract the numbers from the matched groups
+        const num1 = parseFloat(matches[0]);
+        const num2 = parseFloat(matches[1]);
+    
+        // Perform addition
+        const result = num1 + num2;
+        return result.toString();
+    }
+  }
   if (query.toLowerCase().includes("what is ${`var1`} plus ${var2}?")) {
     const regex = /what is (\d+) plus (\d+)\?/i;
     const matches = query.toLowerCase().match(regex);
-    if (matches && matches.length === 3) {
+    if (matches) {
         // Extract the numbers from the matched groups
         const num1 = parseFloat(matches[1]);
         const num2 = parseFloat(matches[2]);
