@@ -46,6 +46,20 @@ export default function QueryProcessor(query: string): string {
         return "ERROR";
     }
   }
+  if (query.toLowerCase().includes("cube")) {
+    const regex = /\d+/g;
+    const matches = query.match(regex);
+    if (matches && matches.length >= 2) {
+        const result = matches.map(Number).filter(num => {
+            const root = Math.sqrt(num);
+            const cubeRoot = Math.cbrt(num);
+            return root % 1 == 0 && cubeRoot % 1 == 0;
+        });
+        return result.toString();
+    } else {
+        return "ERROR";
+    }
+  }
   if (query.toLowerCase().includes("minus")) {
     const regex = /\d+/g;
     const matches = query.match(regex);
