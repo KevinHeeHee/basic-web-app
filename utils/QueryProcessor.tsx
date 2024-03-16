@@ -26,6 +26,16 @@ export default function QueryProcessor(query: string): string {
         return "ERROR";
     }
   }
+  if (query.toLowerCase().includes("largest")) {
+    const regex = /\d+/g;
+    const matches = query.match(regex);
+    if (matches && matches.length >= 2) {
+        const result = matches.map(Number).reduce((a, b) => Math.max(a, b), -Infinity);
+        return result.toString();
+    } else {
+        return "ERROR";
+    }
+  }
   if (query.toLowerCase().includes("minus")) {
     const regex = /\d+/g;
     const matches = query.toLowerCase().match(regex);
