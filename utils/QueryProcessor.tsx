@@ -36,10 +36,20 @@ export default function QueryProcessor(query: string): string {
         return "ERROR";
     }
   }
+  if (query.toLowerCase().includes("multiplied")) {
+    const regex = /\d+/g;
+    const matches = query.match(regex);
+    if (matches && matches.length >= 2) {
+        const result = matches.map(Number).reduce((a, b) => a * b, 1);
+        return result.toString();
+    } else {
+        return "ERROR";
+    }
+  }
   if (query.toLowerCase().includes("minus")) {
     const regex = /\d+/g;
-    const matches = query.toLowerCase().match(regex);
-    if (matches) {
+    const matches = query.match(regex);
+    if (matches && matches.length >= 2) {
         // Extract the numbers from the matched groups
         const num1 = parseFloat(matches[0]);
         const num2 = parseFloat(matches[1]);
