@@ -73,5 +73,24 @@ export default function QueryProcessor(query: string): string {
         return result.toString();
     }
   }
+  if (query.toLowerCase().includes("primes")) {
+    const regex = /\d+/g;
+    const matches = query.match(regex);
+    if (matches && matches.length >= 2) {
+        // Extract the numbers from the matched groups
+        const result = matches.map(Number).filter(num => {
+            if (num < 2) {
+                return false;
+            }
+            for (let i = 2; i <= Math.sqrt(num); i++) {
+                if (num % i === 0) {
+                    return false;
+                }
+            }
+            return true;
+        });
+        return result.toString();
+    }
+  }
   return "";
 }
