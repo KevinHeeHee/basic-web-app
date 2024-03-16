@@ -18,20 +18,16 @@ export default function QueryProcessor(query: string): string {
   }
   if (query.toLowerCase().includes("plus")) {
     const regex = /\d+/g;
-    const matches = query.toLowerCase().match(regex);
-    if (matches) {
-        // Extract the numbers from the matched groups
-        const num1 = parseFloat(matches[0]);
-        const num2 = parseFloat(matches[1]);
-        const num3 = parseFloat(matches[2]);
-
-        // Perform addition
-        const result = num1 + num2 + num3;
+    const matches = query.match(regex);
+    if (matches && matches.length >= 2) {
+        const result = matches.map(Number).reduce((a, b) => a + b, 0);
         return result.toString();
+    } else {
+        return "ERROR";
     }
   }
   if (query.toLowerCase().includes("minus")) {
-    const regex = /\d+/;
+    const regex = /\d+/g;
     const matches = query.toLowerCase().match(regex);
     if (matches) {
         // Extract the numbers from the matched groups
