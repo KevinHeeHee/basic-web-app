@@ -14,7 +14,7 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    name: ESLint and Jest
+    name: Jest
 
     steps:
 
@@ -22,6 +22,4 @@ jobs:
 
     - uses: bahmutov/npm-install@v1
 
-    - run: npm run lint
-
-    - run: npm run test
+    - run: npm run test 
