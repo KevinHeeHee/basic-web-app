@@ -1,4 +1,4 @@
-name: 
+name: Basic Testing
 
 on:
 
@@ -14,7 +14,7 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    name: __BLANK 3__
+    name: ESLint and Jest
 
     steps:
 
@@ -22,6 +22,6 @@ jobs:
 
     - uses: bahmutov/npm-install@v1
 
-    # - run: npm run __BLANK 4__ (Run ESLint)
+    - run: npm run lint
 
     - run: npm run test
