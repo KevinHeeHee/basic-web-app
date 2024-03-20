@@ -97,8 +97,8 @@ export default function QueryProcessor(query: string): string {
     const matches = query.match(regex);
     if (matches && matches.length >= 2) {
         // Extract the numbers from the matched groups
-        const num1 = parseFloat(matches[0]);
-        const num2 = parseFloat(matches[1]);
+        const num1 = parseInt(matches[1]);
+        const num2 = parseInt(matches[2]);
         const result = Math.pow(num1, num2);
         return result.toString();
     }
