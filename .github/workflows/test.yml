@@ -24,4 +24,4 @@ jobs:
 
     # - run: npm run __BLANK 4__ (Run ESLint)
 
-    - run: npm run test (Run Jest)
+    - run: npm run test
